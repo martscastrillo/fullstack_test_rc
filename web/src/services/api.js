@@ -25,9 +25,6 @@ const checkArray = (array) => {
 	if (checkAllNumbers(arr)) {
 		return addArray(arr);
 	}
-	else{
-		return 'hey'
-	}
 };
 
 

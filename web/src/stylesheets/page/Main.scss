@@ -12,11 +12,11 @@
 	align-items: center;
 	justify-content: center;
 	gap: 20px;
-    &__h1{
+    &--h1{
         font-size: 50px;
      
     }
-	&__form {
+	&--form {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -37,10 +37,10 @@
 			gap: 20px;
 			margin: 10px;
 
-			label{
+			.label{
 				font-size: 32px;
 			}
-			input {
+			.input {
 				border: 1px solid $darkMain;
 				border-radius: 5px;
 				padding: 20px;
@@ -70,7 +70,7 @@
 			margin-bottom: 40px;
         }
 	}
-	&__results {
+	&--results {
        
 		display: flex;
 		align-items: center;

@@ -21,7 +21,7 @@ let historicData = null;
 server.post('/calc', (req, res) => {
   const data = req.body;
   historicData = data;
-  res.json(data);
+  res.json(historicData);
   console.log(res.json(data));
   
 });
