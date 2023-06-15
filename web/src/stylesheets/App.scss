@@ -1,0 +1,8 @@
+@import "core/Reset";
+@import "core/Variables";
+@import "core/Mixins";
+@import "page/Main";
+
+.hidden {
+	display: none;
+}
