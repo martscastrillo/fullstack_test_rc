@@ -3,31 +3,22 @@ import { useState } from "react";
 import "../stylesheets/App.scss";
 
 
-
-
 const App = () => {
-	const [dataForm, setDataForm] = useState({
-		value1: "holi",
-		value2: "holita",
-	});
 	const [inputs, setInputs] = useState([]);
-	const [inputValues, setInputValues] = useState([]);
-
-
-
+	const [array, setArray] = useState([]);
 
 	const sendFormApi = (data) => {
 		apiData.sendFormApi(data).then((response) => {
 			if (response) {
-				setDataForm(response.dataForm);
+				setArray(response.array);
 			}
 		});
 	};
 
 	const handleSubmit = (ev) => {
 		ev.preventDefault();
-		sendFormApi(dataForm);
-		setInputValues({});
+		sendFormApi(array);
+		console.log(setArray(array));
 	};
 
 	const agregarInput = () => {
@@ -38,6 +29,7 @@ const App = () => {
 		const nuevosInputs = [...inputs];
 		nuevosInputs[index] = event.target.value;
 		setInputs(nuevosInputs);
+		setArray(nuevosInputs);
 	};
 	return (
 		<div className="superbox">
@@ -51,7 +43,7 @@ const App = () => {
 					<input
 						id={`value${index}`}
 						placeholder={`value ${index}`}
-						value={inputValues[index] || ""}
+						value={value}
 						onChange={(event) => handleChange(index, event)}
 					/>
 				</fieldset>

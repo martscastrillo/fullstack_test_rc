@@ -16,9 +16,7 @@ server.listen(serverPort, () => {
 
 server.post('/calc', (req, res) => {
   const response = req.body;
-  console.log(response);
   res.json(response);
-  
 });
 
 const staticServer = './src/public-react';
