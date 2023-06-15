@@ -38,7 +38,10 @@ const sendFormApi = (data) => {
 	})
 		.then((response) => response.json())
 		.then((dataObj) => {
-			let filteredResults = checkArray(dataObj);
+			const filteredData = dataObj.filter((item) => item !== '' && !isNaN(item));
+		
+			let filteredResults = checkArray(filteredData);
+
 			console.log("Server response:", filteredResults);
 			return filteredResults;
 		});

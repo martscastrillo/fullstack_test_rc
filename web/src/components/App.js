@@ -19,7 +19,6 @@ const App = () => {
 				} else {
 					setError("ese valor no se sumará");
 				}
-				console.log(response);
 				return response;
 			}
 		});
@@ -41,10 +40,9 @@ const App = () => {
 			}
 		});
 		if (!hasEmptyFields) {
-			const filteredData = array.filter((item) => item !== '');
+			const filteredData = array.filter((item) => item !== '' && !isNaN(item));
 		
 			setHistoricQueries([...historicQueries, filteredData]);
-			
 		}
 		else{
 			setHistoricQueries([...historicQueries, array]);
