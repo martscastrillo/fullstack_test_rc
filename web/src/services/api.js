@@ -46,9 +46,23 @@ const sendFormApi = (data) => {
 			return filteredResults;
 		});
 };
+const getHistoric = () => {
+	return fetch("http://localhost:4000/historic", {
+		method: "GET",
+		headers: {
+		  "Content-Type": "application/json",
+		},
+	  })
+		.then((response) => response.json())
+		.then((dataObj) => {
+			console.log(dataObj, 'eureka');
+		  	return dataObj;
+		});
+};
 
 const objToExport = {
 	sendFormApi: sendFormApi,
+	getHistoric: getHistoric,
 };
 
 export default objToExport;

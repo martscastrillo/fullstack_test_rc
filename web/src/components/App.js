@@ -1,5 +1,5 @@
 import apiData from "../services/api";
-import { useState } from "react";
+import { useState  } from "react";
 import "../stylesheets/App.scss";
 
 
@@ -8,15 +8,24 @@ const App = () => {
 	const [array, setArray] = useState([]);
 	const [currentResult, setCurrentResult] = useState(0);
 	const [historicResults, setHistoricResults] = useState([]);
+	const [error, setError] = useState('');
+
+	
+	
 	const sendFormApi = (data) => {
 		apiData.sendFormApi(data).then((response) => {
 			console.log(response);
 			console.log('pasa por aqui');
 			if (response) {
-				setArray(response.array);
-				setCurrentResult(response);
-				setHistoricResults([...historicResults, response]);
-				console.log(historicResults);
+				if(Number(response)){
+					setArray(response.array);
+					setCurrentResult(response);
+					setHistoricResults([...historicResults, response]);
+					setError('');
+				}
+				else{
+					setError('ese valor no se sumará');
+				}
 				return response;
 			}
 		});
@@ -26,17 +35,26 @@ const App = () => {
 	const handleSubmit = (ev) => {
 		ev.preventDefault();
 		sendFormApi(array);
+		apiData.getHistoric();
+		console.log(apiData.getHistoric(), 'doble eurek')
 	};
 
 	const agregarInput = () => {
 		setInputs([...inputs, '']);
 	  };
-
+	  const handleReset = (event) => {
+		event.preventDefault();
+		setCurrentResult(0);
+		setHistoricResults([]);
+		setInputs([]);
+		setError('');
+	};
 	const handleChange = (index, event) => {
 		const nuevosInputs = [...inputs];
 		nuevosInputs[index] = event.target.value;
 		setInputs(nuevosInputs);
 		setArray(nuevosInputs);
+		
 	};
 	return (
 		<div className="superbox">
@@ -56,7 +74,7 @@ const App = () => {
 				</fieldset>
 					
 				)})}
-				
+				<p className="superbox__form__error" >{error} </p>
 				<div className="superbox__form__extradiv">
 				<button type="button" onClick={agregarInput} className="superbox__form__addinput">
 					Add Input
@@ -66,7 +84,7 @@ const App = () => {
 						type="submit"
 						value="Submit"
 					/>
-					<button type="button" onClick={agregarInput} className="superbox__form__reset">
+					<button type="button" onClick={handleReset}className="superbox__form__reset">
 					Reset
 				</button>
 				</div>

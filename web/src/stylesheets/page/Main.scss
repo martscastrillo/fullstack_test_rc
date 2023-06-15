@@ -23,7 +23,12 @@
 		justify-content: center;
 		gap: 20px;
 		border: 0px;
-	
+		&__error{
+			color: red;
+			font-size: 12px;
+			text-align: center;
+			margin: 32px;
+		}
 		&__fieldset {
 			border: 0px;
 			display: flex;
