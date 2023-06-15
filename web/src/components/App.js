@@ -11,14 +11,16 @@ const App = () => {
 		apiData.sendFormApi(data).then((response) => {
 			if (response) {
 				setArray(response.array);
+				console.log(setArray(response.array));
 			}
 		});
+		
 	};
-
+	
 	const handleSubmit = (ev) => {
 		ev.preventDefault();
 		sendFormApi(array);
-		console.log(setArray(array));
+		console.log(sendFormApi(setArray(array)));
 	};
 
 	const agregarInput = () => {

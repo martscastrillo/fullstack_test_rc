@@ -39,7 +39,8 @@ const sendFormApi = (data) => {
 		.then((response) => response.json())
 		.then((dataObj) => {
 			console.log("Server response:", dataObj);
-			console.log(	checkArray(dataObj));
+			console.log(checkArray(dataObj));
+			return(checkArray(dataObj))
 		});
 };
 
