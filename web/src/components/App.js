@@ -7,6 +7,7 @@ const App = () => {
 	const [array, setArray] = useState([]);
 	const [currentResult, setCurrentResult] = useState(0);
 	const [historicQueries, setHistoricQueries] = useState([]);
+	const [validHistoricQueries, setValidHistoricQueries] = useState([]);
 	const [error, setError] = useState("");
 
 	const sendFormApi = (data) => {
@@ -34,6 +35,7 @@ const App = () => {
 		console.log(sendFormApi(array));
 		console.log(historic());
 		let hasEmptyFields = false;
+		setValidHistoricQueries([...validHistoricQueries, array]);
 		array.forEach((item) => {
 			if (item.name === "") {
 				hasEmptyFields = true;
@@ -116,6 +118,9 @@ const App = () => {
 			</div>
 			<div className="superbox--results">
 				<h2>historic queries: {`${historicQueries}`}</h2>
+			</div>
+			<div className="superbox--results">
+				<h2>valid historical queries: {`${validHistoricQueries}`}</h2>
 			</div>
 		</div>
 	);
