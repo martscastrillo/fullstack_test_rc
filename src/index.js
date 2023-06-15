@@ -20,18 +20,15 @@ let historicData = null;
 
 server.post('/calc', (req, res) => {
   const data = req.body;
-
   historicData = data;
-
   res.json(data);
   console.log(res.json(data));
   
 });
 
 server.get('/historic', (req, res) => {
-  if (historicData) {
+ if (historicData) {
     res.json(historicData);
-    console.log( res.json(historicData));
   } else {
     res.status(404).send('No se encontraron datos históricos');
   }

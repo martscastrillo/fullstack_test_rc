@@ -47,15 +47,9 @@ const sendFormApi = (data) => {
 		});
 };
 const getHistoric = () => {
-	return fetch("http://localhost:4000/historic", {
-		method: "GET",
-		headers: {
-		  "Content-Type": "application/json",
-		},
-	  })
+	return fetch("http://localhost:4000/historic")
 		.then((response) => response.json())
 		.then((dataObj) => {
-			console.log(dataObj, 'eureka');
 		  	return dataObj;
 		});
 };

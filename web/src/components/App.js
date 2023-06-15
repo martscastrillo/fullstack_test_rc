@@ -10,12 +10,11 @@ const App = () => {
 	const [historicResults, setHistoricResults] = useState([]);
 	const [error, setError] = useState('');
 
-	
+
 	
 	const sendFormApi = (data) => {
+		
 		apiData.sendFormApi(data).then((response) => {
-			console.log(response);
-			console.log('pasa por aqui');
 			if (response) {
 				if(Number(response)){
 					setArray(response.array);
@@ -31,12 +30,16 @@ const App = () => {
 		});
 		
 	};
-	
+
 	const handleSubmit = (ev) => {
-		ev.preventDefault();
+		ev.preventDefault();	
 		sendFormApi(array);
-		apiData.getHistoric();
-		console.log(apiData.getHistoric(), 'doble eurek')
+		apiData.getHistoric().then((response) => {
+	
+			return response;
+		});
+		
+		
 	};
 
 	const agregarInput = () => {
