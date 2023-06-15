@@ -27,7 +27,6 @@ const checkArray = (array) => {
 	}
 };
 
-
 const sendFormApi = (data) => {
 	return fetch("http://localhost:4000/calc", {
 		method: "POST",
@@ -38,8 +37,10 @@ const sendFormApi = (data) => {
 	})
 		.then((response) => response.json())
 		.then((dataObj) => {
-			const filteredData = dataObj.filter((item) => item !== '' && !isNaN(item));
-		
+			const filteredData = dataObj.filter(
+				(item) => item !== "" && !isNaN(item)
+			);
+
 			let filteredResults = checkArray(filteredData);
 
 			console.log("Server response:", filteredResults);
@@ -50,7 +51,7 @@ const getHistoric = () => {
 	return fetch("http://localhost:4000/historic")
 		.then((response) => response.json())
 		.then((dataObj) => {
-		  	return dataObj;
+			return dataObj;
 		});
 };
 

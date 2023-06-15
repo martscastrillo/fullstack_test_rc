@@ -42,11 +42,10 @@ const App = () => {
 			}
 		});
 		if (!hasEmptyFields) {
-			const filteredData = array.filter((item) => item !== '' && !isNaN(item));
-		
+			const filteredData = array.filter((item) => item !== "" && !isNaN(item));
+
 			setHistoricQueries([...historicQueries, filteredData]);
-		}
-		else{
+		} else {
 			setHistoricQueries([...historicQueries, array]);
 		}
 	};
@@ -79,8 +78,12 @@ const App = () => {
 				{inputs.map((value, index) => {
 					return (
 						<fieldset className="superbox--form__fieldset" key={index}>
-							<label className="label"  htmlFor={`value ${index}`}>{`value ${index}`}</label>
-							<input className="input" 
+							<label
+								className="label"
+								htmlFor={`value ${index}`}
+							>{`value ${index}`}</label>
+							<input
+								className="input"
 								id={`value${index}`}
 								placeholder={`value ${index}`}
 								value={value}
