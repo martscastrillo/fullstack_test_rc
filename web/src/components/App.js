@@ -6,12 +6,18 @@ import "../stylesheets/App.scss";
 const App = () => {
 	const [inputs, setInputs] = useState([]);
 	const [array, setArray] = useState([]);
-
+	const [currentResult, setCurrentResult] = useState(0);
+	const [historicResults, setHistoricResults] = useState([]);
 	const sendFormApi = (data) => {
 		apiData.sendFormApi(data).then((response) => {
+			console.log(response);
+			console.log('pasa por aqui');
 			if (response) {
 				setArray(response.array);
-				console.log(setArray(response.array));
+				setCurrentResult(response);
+				setHistoricResults([...historicResults, response]);
+				console.log(historicResults);
+				return response;
 			}
 		});
 		
@@ -20,7 +26,6 @@ const App = () => {
 	const handleSubmit = (ev) => {
 		ev.preventDefault();
 		sendFormApi(array);
-		console.log(sendFormApi(setArray(array)));
 	};
 
 	const agregarInput = () => {
@@ -54,19 +59,26 @@ const App = () => {
 				
 				<div className="superbox__form__extradiv">
 				<button type="button" onClick={agregarInput} className="superbox__form__addinput">
-					Añadir Input
+					Add Input
 				</button>
 					<input
 						className="superbox__form__submit"
 						type="submit"
 						value="Submit"
 					/>
+					<button type="button" onClick={agregarInput} className="superbox__form__reset">
+					Reset
+				</button>
 				</div>
 			</form>
 
 			<div className="superbox__results">
-				{/* 				<h2>history results: {`${result}`}</h2>
- */}
+								<h2>current result: {`${currentResult}`}</h2>
+
+			</div>
+			<div className="superbox__results">
+								<h2>historic results: {`${historicResults}`}</h2>
+
 			</div>
 		</div>
 	);

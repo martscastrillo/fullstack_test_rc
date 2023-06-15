@@ -25,6 +25,9 @@ const checkArray = (array) => {
 	if (checkAllNumbers(arr)) {
 		return addArray(arr);
 	}
+	else{
+		return 'hey'
+	}
 };
 
 
@@ -38,9 +41,9 @@ const sendFormApi = (data) => {
 	})
 		.then((response) => response.json())
 		.then((dataObj) => {
-			console.log("Server response:", dataObj);
-			console.log(checkArray(dataObj));
-			return(checkArray(dataObj))
+			let filteredResults = checkArray(dataObj);
+			console.log("Server response:", filteredResults);
+			return filteredResults;
 		});
 };
 

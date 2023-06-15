@@ -1,10 +1,10 @@
 .body{
-	color:rgb(28, 28, 124);
-	background-color: rgb(168, 202, 253);
+	color:$darkMain;
+	background-color: $background;
 }
 .superbox {
 	text-transform: uppercase;
-	font-family: "Poppins", sans-serif;
+	font-family: $mainFont;
 	display: flex;
 	flex-direction: column;
 	width: 100vw;
@@ -36,38 +36,25 @@
 				font-size: 32px;
 			}
 			input {
-				border: 1px solid rgb(28, 28, 124);
+				border: 1px solid $darkMain;
 				border-radius: 5px;
 				padding: 20px;
 				text-transform: uppercase;
 			}
 		}
 		&__submit {
-			text-transform: uppercase;
-			font-family: "Poppins", sans-serif;
-			background-color: rgb(28, 28, 124);
-			cursor: pointer;
-			transition: all 0.5s ease;
-			border: 0;
-			border-radius: 20px;
-			color: white;
-			font-weight: 600;
-			padding: 16px 43px;
+			@include button();
+			background-color: $darkMain;
+		}
+		&__reset {
+			
+			@include button();
+			background-color: $secondColor;
 		
 		}
 		&__addinput {
-			display: flex;
-			align-items: center;
-			text-transform: uppercase;
-			font-family: "Poppins", sans-serif;
-			background-color: rgb(126, 18, 160);
-			cursor: pointer;
-			transition: all 0.5s ease;
-			border: 0;
-			border-radius: 20px;
-			color: white;
-			font-weight: 600;
-			padding: 16px 43px;
+			@include button();
+			background-color: $thirdColor;
 		
 		}
         &__extradiv{
@@ -75,10 +62,11 @@
 			justify-content: center;
             gap:20px;
 			margin-top: 40px;
+			margin-bottom: 40px;
         }
 	}
 	&__results {
-        margin-top: 30px;
+       
 		display: flex;
 		align-items: center;
 		justify-content: center;

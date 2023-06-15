@@ -1,0 +1,11 @@
+@mixin button() {
+	text-transform: uppercase;
+	font-family: $mainFont;
+	cursor: pointer;
+	transition: all 0.5s ease;
+	border: 0;
+	border-radius: 20px;
+	color: white;
+	font-weight: 600;
+	padding: 16px 43px;
+}
