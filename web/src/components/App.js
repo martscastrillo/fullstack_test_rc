@@ -10,10 +10,12 @@ const App = () => {
 		value1: "holi",
 		value2: "holita",
 	});
-	const [contador, setContador] = useState(1);
-	/* const [dataArray, setDataArray] = useState([]);
-	const [inputValues, setInputValues] = useState({});
-	const [result, setResult] = useState(0); */
+	const [inputs, setInputs] = useState([]);
+	const [inputValues, setInputValues] = useState([]);
+
+
+
+
 	const sendFormApi = (data) => {
 		apiData.sendFormApi(data).then((response) => {
 			if (response) {
@@ -25,13 +27,11 @@ const App = () => {
 	const handleSubmit = (ev) => {
 		ev.preventDefault();
 		sendFormApi(dataForm);
-
+		setInputValues({});
 	};
-	const [inputs, setInputs] = useState([]);
 
 	const agregarInput = () => {
 		setInputs([...inputs, '']);
-		setContador(contador + 1);
 	  };
 
 	const handleChange = (index, event) => {
@@ -43,24 +43,31 @@ const App = () => {
 		<div className="superbox">
 			<h1 className="superbox__h1">full stack test</h1>
 			<form action="" className="superbox__h1" onSubmit={handleSubmit}>
-				
-
-				{inputs.map((value, index) => (
-					<fieldset className="superbox__form__fieldset">
-					<label htmlFor="value1">value 1</label>
+				{inputs.map((value, index) => {
+					
+					return(
+					<fieldset className="superbox__form__fieldset" key={index}>
+					<label htmlFor={`value ${index}`}>{`value ${index}`}</label>
 					<input
-						id={`value${contador}`}
+						id={`value${index}`}
 						placeholder={`value ${index}`}
-						key={index}
-						value={value}
+						value={inputValues[index] || ""}
 						onChange={(event) => handleChange(index, event)}
 					/>
 				</fieldset>
 					
-				))}
-				<button type="button" onClick={agregarInput}>
+				)})}
+				
+				<div className="superbox__form__extradiv">
+				<button type="button" onClick={agregarInput} className="superbox__form__addinput">
 					Añadir Input
 				</button>
+					<input
+						className="superbox__form__submit"
+						type="submit"
+						value="Submit"
+					/>
+				</div>
 			</form>
 
 			<div className="superbox__results">
