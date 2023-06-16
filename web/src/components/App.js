@@ -12,29 +12,21 @@ const App = () => {
 
 	const sendFormApi = (data) => {
 		apiData.sendFormApi(data).then((response) => {
-			if (response) {
-				if (Number(response)) {
-					setArray(response.array);
-					
-					setError("");
-				} else {
-					setError("there is a value that will not be added");
-				}
-				return response;
-			}
+			setCurrentResult(response)
 		});
 	};
 
 	const historic = () => {
 		apiData.getHistoric().then((response) => {
-			return response;
+			console.log(response);
+			setHistoricQueries([...historicQueries, response]);		
 		});
 	};
 	const handleSubmit = (ev) => {
 		ev.preventDefault();
 		console.log(sendFormApi(array));
 		console.log(historic());
-		let hasEmptyFields = false;
+	/* 	let hasEmptyFields = false;
 		setValidHistoricQueries([...validHistoricQueries, array]);
 		array.forEach((item) => {
 			if (item.name === "") {
@@ -51,15 +43,15 @@ const App = () => {
 		const sumNumbersFromArray = (arr) => {
 			let sum = 0;
 			for (let i = 0; i < arr.length; i++) {
-			  const item = arr[i];
-			  if (typeof item === 'string' && item.trim() !== '' && !isNaN(item)) {
-				sum += Number(item);
-			  }
+				const item = arr[i];
+				if (typeof item === 'string' && item.trim() !== '' && !isNaN(item)) {
+					sum += Number(item);
+				}
 			}
 			return sum;
-		  };
-		  
-		setCurrentResult(sumNumbersFromArray(array));
+		};
+
+		setCurrentResult(sumNumbersFromArray(array)); */
 	};
 
 	const agregarInput = () => {

@@ -14,16 +14,22 @@ server.listen(serverPort, () => {
 
 let historicData = null;
 
+const addValidNumbers = (array) => {
+  const validNumbers = array.filter((element) => element.trim() !== '' && !isNaN(element));
+  const result = validNumbers.reduce((acc, element) => acc + Number(element), 0);
+  return result;
+};
+
 server.post("/calc", (req, res) => {
 	const data = req.body;
 	historicData = data;
-	res.json(historicData);
-	console.log(res.json(data));
+	res.json(addValidNumbers(historicData));
+	
 });
 
 server.get("/historic", (req, res) => {
-	if (historicData) {
-		res.json(historicData);
+	if (data) {
+		res.json(data);
 	} else {
 		res.status(404).send("No se encontraron datos históricos");
 	}

@@ -1,4 +1,4 @@
-const convertNumbers = (array) => {
+/* const convertNumbers = (array) => {
 	return array.map((element) => {
 		if (!isNaN(element)) {
 			return Number(element);
@@ -25,7 +25,7 @@ const checkArray = (array) => {
 	if (checkAllNumbers(arr)) {
 		return addArray(arr);
 	}
-};
+}; */
 
 const sendFormApi = (data) => {
 	return fetch("http://localhost:4000/calc", {
@@ -37,14 +37,15 @@ const sendFormApi = (data) => {
 	})
 		.then((response) => response.json())
 		.then((dataObj) => {
-			const filteredData = dataObj.filter(
+			return dataObj;
+				/*const filteredData = dataObj.filter(
 				(item) => item !== "" && !isNaN(item)
 			);
 
-			let filteredResults = checkArray(filteredData);
-
+		 let filteredResults = checkArray(filteredData);
+			console.log("Server response:", dataObj);
 			console.log("Server response:", filteredResults);
-			return filteredResults;
+			return filteredResults; */
 		});
 };
 const getHistoric = () => {
