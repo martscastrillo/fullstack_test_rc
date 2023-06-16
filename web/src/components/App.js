@@ -1,5 +1,5 @@
 import apiData from "../services/api";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../stylesheets/App.scss";
 
 const App = () => {
@@ -9,6 +9,21 @@ const App = () => {
 	const [historicQueries, setHistoricQueries] = useState([]);
 	const [validHistoricQueries, setValidHistoricQueries] = useState([]);
 	const [error, setError] = useState("");
+
+	useEffect(() => {
+		const handleLoad = () => {
+		  // Código a ejecutar cuando se carga la página
+		  console.log('La página se ha cargado');
+		  setHistoricQueries([]);
+		  setValidHistoricQueries([]);
+		};
+	
+		window.addEventListener('load', handleLoad);
+	
+		return () => {
+		  window.removeEventListener('load', handleLoad);
+		};
+	  }, []);
 
 	const sendFormApi = (data) => {
 		apiData.sendFormApi(data).then((response) => {
