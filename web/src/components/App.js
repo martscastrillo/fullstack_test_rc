@@ -15,10 +15,10 @@ const App = () => {
 			if (response) {
 				if (Number(response)) {
 					setArray(response.array);
-					setCurrentResult(response);
+					
 					setError("");
 				} else {
-					setError("ese valor no se sumará");
+					setError("there is a value that will not be added");
 				}
 				return response;
 			}
@@ -43,11 +43,23 @@ const App = () => {
 		});
 		if (!hasEmptyFields) {
 			const filteredData = array.filter((item) => item !== "" && !isNaN(item));
-
-			setHistoricQueries([...historicQueries, filteredData]);
+			setHistoricQueries([...historicQueries, array]);
+			setValidHistoricQueries([...validHistoricQueries, filteredData]);
 		} else {
 			setHistoricQueries([...historicQueries, array]);
 		}
+		const sumNumbersFromArray = (arr) => {
+			let sum = 0;
+			for (let i = 0; i < arr.length; i++) {
+			  const item = arr[i];
+			  if (typeof item === 'string' && item.trim() !== '' && !isNaN(item)) {
+				sum += Number(item);
+			  }
+			}
+			return sum;
+		  };
+		  
+		setCurrentResult(sumNumbersFromArray(array));
 	};
 
 	const agregarInput = () => {
@@ -57,6 +69,7 @@ const App = () => {
 		event.preventDefault();
 		setCurrentResult(0);
 		setHistoricQueries([]);
+		setValidHistoricQueries([]);
 		setInputs([]);
 		setError("");
 	};
@@ -66,7 +79,7 @@ const App = () => {
 		setInputs(nuevosInputs);
 		setArray(nuevosInputs);
 		if (!Number(event.target.value)) {
-			setError("ese valor no se sumará");
+			setError("there is a value that will not be added");
 		} else {
 			setError("");
 		}
