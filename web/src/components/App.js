@@ -19,14 +19,14 @@ const App = () => {
 	const historic = () => {
 		apiData.getHistoric().then((response) => {
 			console.log(response);
-			setHistoricQueries([...historicQueries, response]);		
+			setHistoricQueries([...historicQueries, response]);
 		});
 	};
 	const handleSubmit = (ev) => {
 		ev.preventDefault();
 		console.log(sendFormApi(array));
 		console.log(historic());
-	/* 	let hasEmptyFields = false;
+		let hasEmptyFields = false;
 		setValidHistoricQueries([...validHistoricQueries, array]);
 		array.forEach((item) => {
 			if (item.name === "") {
@@ -35,23 +35,11 @@ const App = () => {
 		});
 		if (!hasEmptyFields) {
 			const filteredData = array.filter((item) => item !== "" && !isNaN(item));
-			setHistoricQueries([...historicQueries, array]);
 			setValidHistoricQueries([...validHistoricQueries, filteredData]);
 		} else {
 			setHistoricQueries([...historicQueries, array]);
 		}
-		const sumNumbersFromArray = (arr) => {
-			let sum = 0;
-			for (let i = 0; i < arr.length; i++) {
-				const item = arr[i];
-				if (typeof item === 'string' && item.trim() !== '' && !isNaN(item)) {
-					sum += Number(item);
-				}
-			}
-			return sum;
-		};
 
-		setCurrentResult(sumNumbersFromArray(array)); */
 	};
 
 	const agregarInput = () => {
@@ -79,6 +67,7 @@ const App = () => {
 	return (
 		<div className="superbox">
 			<h1 className="superbox--h1">full stack test</h1>
+			<p>if you want to add fields click on "add input" and add as many as you want</p>
 			<form action="" className="superbox--h1" onSubmit={handleSubmit}>
 				{inputs.map((value, index) => {
 					return (
@@ -128,7 +117,7 @@ const App = () => {
 				<h2>historic queries: {`${historicQueries}`}</h2>
 			</div>
 			<div className="superbox--results">
-				<h2>valid historical queries: {`${validHistoricQueries}`}</h2>
+				<h2>valid historic queries: {`${validHistoricQueries}`}</h2>
 			</div>
 		</div>
 	);
