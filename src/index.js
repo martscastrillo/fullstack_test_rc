@@ -28,8 +28,8 @@ server.post("/calc", (req, res) => {
 });
 
 server.get("/historic", (req, res) => {
-	if (data) {
-		res.json(data);
+	if (historicData) {
+		res.json(historicData);
 	} else {
 		res.status(404).send("No se encontraron datos históricos");
 	}
